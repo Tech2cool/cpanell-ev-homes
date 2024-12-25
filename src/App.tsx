@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ServerList from "./components/ServerList";
 import ServerDetail from "./components/ServerDetail";
+import FileUpload from "./components/UploadFile";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ServerList />} />
           <Route path="/server/:id" element={<ServerDetail />} />
+          <Route path="/upload" element={<FileUpload />} />
         </Routes>
       </div>
     </Router>
