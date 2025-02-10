@@ -167,15 +167,17 @@ function ServerDetail() {
             <strong>Full Path:</strong> {server?.fullpath}
           </p>
         </div>
-        {server?.status === "online" ? (
-          <button className="update-button update-stop" onClick={handleStop}>
-            Stop Server
-          </button>
-        ) : (
-          <button className="update-button" onClick={handleStart}>
-            Start Server
-          </button>
-        )}
+        {/* {server?.status === "online" ? ( */}
+        <button className="update-button" onClick={handleStart}>
+          Start Server
+        </button>
+
+        {/* // ) : ( */}
+        <button className="update-button update-stop" onClick={handleStop}>
+          Stop Server
+        </button>
+
+        {/* )} */}
         <button
           className="update-button update-restart"
           onClick={handleRestart}
