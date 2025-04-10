@@ -73,9 +73,17 @@ function ServerDetail() {
   const handleStart = async () => {
     try {
       toggleUpdating();
-      await axios.post(`https://cpanelapi.evhomes.tech/start/${id}`, {
-        server: id,
-      });
+      await axios.post(
+        `https://cpanelapi.evhomes.tech/start/${id}`,
+        {
+          server: id,
+        },
+        {
+          headers: {
+            "x-platform": "web",
+          },
+        }
+      );
       alert("Server started successfully!");
       // navigate('/');
     } catch (err) {
@@ -88,9 +96,17 @@ function ServerDetail() {
   const handleRestart = async () => {
     try {
       toggleUpdating();
-      await axios.post(`https://cpanelapi.evhomes.tech/restart/${id}`, {
-        server: id,
-      });
+      await axios.post(
+        `https://cpanelapi.evhomes.tech/restart/${id}`,
+        {
+          server: id,
+        },
+        {
+          headers: {
+            "x-platform": "web",
+          },
+        }
+      );
       alert("Server restart successfully!");
       // navigate('/');
     } catch (err) {
@@ -103,9 +119,17 @@ function ServerDetail() {
   const handleStop = async () => {
     try {
       toggleUpdating();
-      await axios.post(`https://cpanelapi.evhomes.tech/stop/${id}`, {
-        server: id,
-      });
+      await axios.post(
+        `https://cpanelapi.evhomes.tech/stop/${id}`,
+        {
+          server: id,
+        },
+        {
+          headers: {
+            "x-platform": "web",
+          },
+        }
+      );
       alert("Server stop successfully!");
       // navigate('/');
     } catch (err) {

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 interface Server {
   _id: string;
@@ -17,15 +17,22 @@ interface Server {
 function ServerList() {
   const [servers, setServers] = useState<Server[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchServers = async () => {
       try {
-        const response = await axios.get('https://cpanelapi.evhomes.tech/servers');
+        const response = await axios.get(
+          "https://cpanelapi.evhomes.tech/servers",
+          {
+            headers: {
+              "x-platform": "web",
+            },
+          }
+        );
         setServers(response.data?.data);
       } catch (err) {
-        setError('Failed to fetch servers. Please try again later.');
+        setError("Failed to fetch servers. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -44,13 +51,21 @@ function ServerList() {
       ) : (
         <ul className="server-list">
           {servers.map((server) => (
-              <Link to={`/server/${server.serverId}`} className="server-link">
-            <li key={server._id} className="server-item">
+            <Link to={`/server/${server.serverId}`} className="server-link">
+              <li key={server._id} className="server-item">
                 {server.name}
-              {/* <p className="server-path">{server.fullpath}</p> */}
-              <p className={`server-path ${server?.status === "online" ?"status-active" :"status-inactive"}`}>{server?.status}</p>
-            </li>
-              </Link>
+                {/* <p className="server-path">{server.fullpath}</p> */}
+                <p
+                  className={`server-path ${
+                    server?.status === "online"
+                      ? "status-active"
+                      : "status-inactive"
+                  }`}
+                >
+                  {server?.status}
+                </p>
+              </li>
+            </Link>
           ))}
         </ul>
       )}

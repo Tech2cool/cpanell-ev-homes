@@ -37,6 +37,7 @@ const FileUpload: React.FC = () => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            "x-platform": "web",
           },
           onUploadProgress: (progressEvent) => {
             if (progressEvent.total) {
